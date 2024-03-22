@@ -3,13 +3,12 @@ package kr.ac.duksung.eyesone;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.appcompat.R;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button nevigation;
+    Button nevi;
     Button detect;
     Button parent;
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nevigation = findViewById(R.id.nevigation);
+        nevi = findViewById(R.id.nevi);
         detect = findViewById(R.id.detect);
         parent = findViewById(R.id.parent);
 
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        nevigation.setOnClickListener(new View.OnClickListener() {
+        nevi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), NeviActivity.class);
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 }

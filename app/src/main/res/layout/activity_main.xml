@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/nevigation"
+        android:id="@+id/nevi"
         android:layout_width="302dp"
         android:layout_height="87dp"
         android:layout_marginTop="40dp"
@@ -37,6 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nevigation" />
+        app:layout_constraintTop_toBottomOf="@+id/nevi" />
+
 
 </android.support.constraint.ConstraintLayout>

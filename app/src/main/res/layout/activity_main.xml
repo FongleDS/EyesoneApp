@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/detect"
+        android:layout_width="302dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="158dp"
+        android:text="장애물탐지"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/nevigation"
+        android:layout_width="302dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="40dp"
+        android:text="네비게이션"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detect" />
+
+    <Button
+        android:id="@+id/parent"
+        android:layout_width="302dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="40dp"
+        android:text="보호자정보등록"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nevigation" />
+
+</android.support.constraint.ConstraintLayout>

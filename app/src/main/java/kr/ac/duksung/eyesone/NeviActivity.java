@@ -2,6 +2,7 @@ package kr.ac.duksung.eyesone;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.appcompat.R;
 
 public class NeviActivity extends AppCompatActivity {
 

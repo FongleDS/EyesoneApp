@@ -13,8 +13,17 @@
         android:theme="@style/Theme.Eyesone"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="false">
+            android:name=".ReviseBookmarkActivity"
+            android:exported="false"
+            android:label="Revise Bookmark">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddBookmarkActivity"
+            android:exported="false"
+            android:label="Add Bookmark">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

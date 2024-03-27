@@ -39,5 +39,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nevi" />
 
+    <Button
+        android:id="@+id/textreader"
+        android:layout_width="302dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="40dp"
+        android:text="글자 읽어주기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent" />
+
 
 </android.support.constraint.ConstraintLayout>

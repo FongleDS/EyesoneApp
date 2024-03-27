@@ -10,7 +10,7 @@
         android:id="@+id/detect"
         android:layout_width="302dp"
         android:layout_height="87dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="100dp"
         android:background="#CCF9A0"
         android:text="장애물탐지"
         android:textSize="30sp"
@@ -56,6 +56,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textreader"
+        app:srcCompat="@drawable/voice" />
 
 
 </android.support.constraint.ConstraintLayout>

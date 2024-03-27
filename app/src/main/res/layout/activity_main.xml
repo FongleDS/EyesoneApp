@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/voicerecoder"
         android:layout_width="128dp"
         android:layout_height="126dp"
         android:layout_marginTop="10dp"

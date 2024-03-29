@@ -61,10 +61,10 @@
         android:id="@+id/voicerecoder"
         android:layout_width="128dp"
         android:layout_height="126dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textreader"
         app:srcCompat="@drawable/voice" />
 
 

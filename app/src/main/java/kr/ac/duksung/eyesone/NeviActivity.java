@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.io.File;
@@ -120,4 +121,5 @@ public class NeviActivity extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
 }

@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button nevi;
     Button detect;
     Button parent;
+    Button textreader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         nevi = findViewById(R.id.nevi);
         detect = findViewById(R.id.detect);
         parent = findViewById(R.id.parent);
+        textreader = findViewById(R.id.textreader);
 
         detect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textreader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TextActivity.class);
                 startActivity(intent);
             }
         });

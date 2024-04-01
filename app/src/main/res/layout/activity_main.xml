@@ -8,36 +8,64 @@
 
     <Button
         android:id="@+id/detect"
-        android:layout_width="302dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="158dp"
+        android:layout_width="323dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="#CCF9A0"
         android:text="장애물탐지"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/nevi"
-        android:layout_width="302dp"
-        android:layout_height="87dp"
+        android:layout_width="323dp"
+        android:layout_height="70dp"
         android:layout_marginTop="40dp"
+        android:background="#CCF9A0"
         android:text="네비게이션"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detect" />
 
     <Button
         android:id="@+id/parent"
-        android:layout_width="302dp"
-        android:layout_height="87dp"
+        android:layout_width="323dp"
+        android:layout_height="70dp"
         android:layout_marginTop="40dp"
+        android:background="#CCF9A0"
         android:text="보호자정보등록"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nevi" />
+
+    <Button
+        android:id="@+id/textreader"
+        android:layout_width="323dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:background="#CCF9A0"
+        android:text="텍스트 읽어주기"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent" />
+
+    <ImageView
+        android:id="@+id/voicerecoder"
+        android:layout_width="128dp"
+        android:layout_height="126dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/voice" />
 
 
 </android.support.constraint.ConstraintLayout>

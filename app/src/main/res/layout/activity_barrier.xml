@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".BarrierActivity">
 
+    <ImageView
+        android:id="@+id/voicerecoder"
+        android:layout_width="128dp"
+        android:layout_height="126dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/voice" />
+
 </android.support.constraint.ConstraintLayout>

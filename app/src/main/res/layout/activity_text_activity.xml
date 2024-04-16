@@ -16,4 +16,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/voice" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="꽁꽁 얼어붙은 한강 위로 고양이가 걸어다닙니다."
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/edge"
+        app:layout_constraintBottom_toTopOf="@id/voicerecoder"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/meow"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

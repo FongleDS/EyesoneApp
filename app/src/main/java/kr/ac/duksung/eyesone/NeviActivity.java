@@ -2,7 +2,7 @@ package kr.ac.duksung.eyesone;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -85,7 +85,7 @@ public class NeviActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) { // 액션바가 선택된 경우
         switch (item.getItemId()) {
             case R.id.add: // add버튼이 추가하는 intent 호출
-                Intent intent = new Intent(this, AddBookmarkActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
             default:
@@ -106,7 +106,7 @@ public class NeviActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case 1: // 수정이 선택되는 경우
-                Intent intent = new Intent(this, ReviseBookmarkActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("idx", Integer.parseInt(fileList()[info.position].substring(3)));
                 // 해당 리스트의 위치에 파일번호를 int형으로 intent에 넘겨줌
                 startActivity(intent); // intent 호출

@@ -8,12 +8,14 @@
 
     <Button
         android:id="@+id/detect"
-        android:layout_width="323dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
         android:background="#CCF9A0"
         android:text="장애물탐지"
         android:textSize="24sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +23,11 @@
 
     <Button
         android:id="@+id/nevi"
-        android:layout_width="323dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:background="#CCF9A0"
         android:text="네비게이션"
         android:textSize="24sp"
@@ -32,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detect" />
 
-    <Button
+    <!--<Button
         android:id="@+id/parent"
         android:layout_width="323dp"
         android:layout_height="70dp"
@@ -43,19 +47,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nevi" />
+        app:layout_constraintTop_toBottomOf="@+id/nevi" />-->
 
     <Button
         android:id="@+id/textreader"
-        android:layout_width="323dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:background="#CCF9A0"
         android:text="텍스트 읽어주기"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nevi" />
 
     <ImageView
         android:id="@+id/voicerecoder"

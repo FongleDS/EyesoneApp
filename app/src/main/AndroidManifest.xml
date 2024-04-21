@@ -54,16 +54,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NeviActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-            <intent-filter>
-                <action android:name="android.intent.action.TTS_SERVICE" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".BarrierActivity"
             android:exported="false">
             <meta-data

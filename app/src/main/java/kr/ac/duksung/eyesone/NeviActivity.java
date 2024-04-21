@@ -66,13 +66,13 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
         EditText originEditText = findViewById(R.id.origin);
         EditText destinationEditText = findViewById(R.id.destination);
 
-        String origin = originEditText.getText().toString();
-        String destination = destinationEditText.getText().toString();
+        String origin = originEditText.getText().toString().trim(); // Remove leading and trailing spaces
+        String destination = destinationEditText.getText().toString().trim(); // Remove leading and trailing spaces
 
-        if (!origin.isEmpty() && !destination.isEmpty()) {
-            fetchDirections(origin, destination);
-        } else {
+        if (origin.isEmpty() || destination.isEmpty()) {
             Toast.makeText(this, "출발지와 목적지를 입력하세요.", Toast.LENGTH_LONG).show();
+        } else {
+            fetchDirections(origin, destination);
         }
     }
 
@@ -119,4 +119,5 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
         String points;
     }
 }
+
 

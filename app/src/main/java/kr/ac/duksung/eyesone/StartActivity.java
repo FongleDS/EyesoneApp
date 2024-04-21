@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import android.os.Handler;
 
 public class StartActivity extends AppCompatActivity {
+    //puch하려고 쓰는거
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,7 +17,7 @@
             android:value="AIzaSyCRmidlm35d9b3axL3gnJpCgIu38XYSHug"/>
 
         <activity
-            android:name=".NeviActivity2"
+            android:name=".NeviActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

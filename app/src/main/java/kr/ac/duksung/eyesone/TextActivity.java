@@ -36,7 +36,7 @@ public class TextActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CAMERA = 2;
     private TextView textView;
     private MyTTS tts;
-    private String url = "http://192.168.0.148:5000/upload"; // 서버 URL
+    private String url = "http://10.0.0.2:5000/upload";
     private static final String TAG = "CameraDemo";
 
 

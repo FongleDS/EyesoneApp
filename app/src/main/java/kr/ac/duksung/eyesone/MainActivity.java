@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     Button parent;
     Button textreader;
     private MyTTS tts;
-    private int clickCount;
     private boolean barClicks, navClicks, textClicks;
     private static final int DOUBLE_CLICK_TIME_DELTA = 5000;
 
@@ -72,10 +71,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     barClicks = false;
                     barHandler.postDelayed(barRunnable, DOUBLE_CLICK_TIME_DELTA);
-                    // Toast.makeText(MainActivity.this, "Click again within 3 seconds to execute action.", Toast.LENGTH_SHORT).show();
                 } else {
                     barHandler.removeCallbacks(barRunnable);
-                    barClicks = true; // 클릭 상태 초기화
+                    barClicks = true;
                     tts.speak("장애물 탐지 페이지로 넘어갑니다");
                     Intent intent = new Intent(getApplicationContext(), BarrierActivity.class);
                     startActivity(intent);
@@ -92,10 +90,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     navClicks = false;
                     navHandler.postDelayed(navRunnable, DOUBLE_CLICK_TIME_DELTA);
-                    // Toast.makeText(MainActivity.this, "Click again within 3 seconds to execute action.", Toast.LENGTH_SHORT).show();
                 } else {
                     navHandler.removeCallbacks(navRunnable);
-                    navClicks = true; // 클릭 상태 초기화
+                    navClicks = true;
                     tts.speak("네비게이션 페이지로 넘어갑니다");
                     Intent intent = new Intent(getApplicationContext(), NeviActivity.class);
                     startActivity(intent);
@@ -121,10 +118,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     textClicks = false;
                     textHandler.postDelayed(textRunnable, DOUBLE_CLICK_TIME_DELTA);
-                    // Toast.makeText(MainActivity.this, "Click again within 3 seconds to execute action.", Toast.LENGTH_SHORT).show();
                 } else {
                     textHandler.removeCallbacks(textRunnable);
-                    textClicks = true; // 클릭 상태 초기화
+                    textClicks = true;
                     tts.speak("텍스트 읽어주기 페이지로 넘어갑니다");
                     Intent intent = new Intent(getApplicationContext(), TextActivity.class);
                     startActivity(intent);

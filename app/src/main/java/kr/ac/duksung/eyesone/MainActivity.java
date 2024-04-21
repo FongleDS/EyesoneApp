@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     barClicks = false;
                     barHandler.postDelayed(barRunnable, DOUBLE_CLICK_TIME_DELTA);
-                    Toast.makeText(MainActivity.this, "Click again within 3 seconds to execute action.", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(MainActivity.this, "Click again within 3 seconds to execute action.", Toast.LENGTH_SHORT).show();
                 } else {
                     barHandler.removeCallbacks(barRunnable);
                     barClicks = true; // 클릭 상태 초기화

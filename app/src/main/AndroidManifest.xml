@@ -19,7 +19,6 @@
         android:icon="@mipmap/voice"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/voice"
-        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eyesone"
         tools:targetApi="31">

@@ -19,12 +19,18 @@
         android:icon="@mipmap/voice"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/voice"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eyesone"
         tools:targetApi="31">
+        <activity
+            android:name=".CaptureActivity"
+            android:exported="false" />
+
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCRmidlm35d9b3axL3gnJpCgIu38XYSHug"/>
+            android:name="com.goodle.android.geo.API_KEY"
+            android:value="AIzaSyCRmidlm35d9b3axL3gnJpCgIu38XYSHug" />
+
 
         <activity
             android:name=".NeviActivity"
@@ -32,6 +38,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.TTS_SERVICE" />
             </intent-filter>
@@ -42,6 +49,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.TTS_SERVICE" />
             </intent-filter>
@@ -52,6 +60,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.TTS_SERVICE" />
             </intent-filter>
@@ -62,6 +71,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.TTS_SERVICE" />
             </intent-filter>
@@ -69,7 +79,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
+            <intent-filter>
+                <action android:name="android.intent.action.TTS_SERVICE" />
+            </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

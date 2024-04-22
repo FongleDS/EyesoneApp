@@ -25,6 +25,10 @@
         android:theme="@style/Theme.Eyesone"
         tools:targetApi="31">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCRmidlm35d9b3axL3gnJpCgIu38XYSHug"/>
+
         <activity
             android:name=".NeviActivity"
             android:exported="false">

@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -31,6 +33,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -68,7 +72,7 @@ public class CameraActivity extends AppCompatActivity {
 
         tts = new MyTTS(this, null);
 
-        File sdcard = getExternalFilesDir(null); // Private external directory
+        File sdcard = getExternalFilesDir(null);
         file = new File(sdcard, "capture.jpg");
 
         imageView = findViewById(R.id.imageView);
@@ -95,20 +99,6 @@ public class CameraActivity extends AppCompatActivity {
                     }
                 }
             }
-
-            /**
-            @Override
-            public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(CameraActivity.this, Manifest.permission.CAMERA)
-                        == PackageManager.PERMISSION_GRANTED) {
-                    // 권한이 있을 경우 사진 촬영 시작
-                    capture();
-                } else {
-                    // 권한이 없을 경우 권한 요청
-                    requestCameraPermission();
-                }
-            }
-            **/
         });
 
     }
@@ -117,7 +107,6 @@ public class CameraActivity extends AppCompatActivity {
 
     private void requestCameraPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-            // 사용자에게 권한 요청의 필요성 설명
             new AlertDialog.Builder(this)
                     .setTitle("카메라 권한 필요")
                     .setMessage("이 앱은 카메라 권한이 필요합니다.")
@@ -158,7 +147,6 @@ public class CameraActivity extends AppCompatActivity {
         startActivityForResult(intent, 101);
     }
 
-    /**
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -166,22 +154,8 @@ public class CameraActivity extends AppCompatActivity {
         if(requestCode == 101 && resultCode == Activity.RESULT_OK){
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 8;
-            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
-            imageView.setImageBitmap(bitmap);
-        }
-    }
-    **/
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == 101 && resultCode == Activity.RESULT_OK){
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 8;
-            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
-            imageView.setImageBitmap(bitmap);
+            // Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+            // imageView.setImageBitmap(bitmap);
 
             uploadImage(file);
         }
@@ -190,8 +164,8 @@ public class CameraActivity extends AppCompatActivity {
 
     private void uploadImage(File imageFile) {
 
-        //String apiURL = "http://10.0.2.2:5000/upload";
-        String apiURL = "http://172.20.26.98:5000/upload";
+        String apiURL = "http://10.0.2.2:5000/upload";
+        // String apiURL = "http://192.168.137.1:5000/upload";
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("image/jpeg");
@@ -215,23 +189,50 @@ public class CameraActivity extends AppCompatActivity {
             public void onResponse(@NonNull okhttp3.Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     final String responseData = response.body().string();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(CameraActivity.this, "Upload Success: " + responseData, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseData);
+                        final String textResult = jsonObject.getString("text");
+                        final String imageBase64 = jsonObject.getString("image");
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView textView = findViewById(R.id.text_view);
+                                textView.setText(textResult);
+                                Toast.makeText(CameraActivity.this, "Upload Success", Toast.LENGTH_SHORT).show();
+
+                                byte[] decodedString = Base64.decode(imageBase64, Base64.DEFAULT);
+                                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                                ImageView imageView = findViewById(R.id.imageView); // id가 image_view인 이미지 뷰를 찾음
+                                imageView.setImageBitmap(decodedByte);
+
+                                tts.speak("이것은 "+textResult + "입니다");
+                            }
+                        });
+                    } catch (JSONException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(CameraActivity.this, "JSON Parsing Error", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 } else {
-                    // 에러 처리
                     throw new IOException("Unexpected code " + response);
                 }
             }
 
             @Override
             public void onFailure(@NonNull okhttp3.Call call, @NonNull IOException e) {
-                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println(e);
+                        Toast.makeText(CameraActivity.this, "Request Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-    }
 
+    }
 }

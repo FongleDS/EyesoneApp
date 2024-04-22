@@ -12,7 +12,7 @@ public class MyTTS extends TextToSpeech {
 
         this.setPitch(1.0f);    // 음성의 높낮이 설정
         this.setSpeechRate(1.0f);    // 음성의 속도 설정
-        this.setLanguage(Locale.KOREA);
+        this.setLanguage(Locale.KOREAN);
     }
 
     public void speak(CharSequence text) {

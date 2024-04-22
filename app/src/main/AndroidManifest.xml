@@ -16,7 +16,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/voice"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/voice"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eyesone"
         tools:targetApi="31">
@@ -77,12 +79,8 @@
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.TTS_SERVICE" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -203,7 +203,7 @@ public class CameraActivity extends AppCompatActivity {
 
                                 byte[] decodedString = Base64.decode(imageBase64, Base64.DEFAULT);
                                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                                ImageView imageView = findViewById(R.id.imageView); // id가 image_view인 이미지 뷰를 찾음
+                                ImageView imageView = findViewById(R.id.imageView);
                                 imageView.setImageBitmap(decodedByte);
 
                                 tts.speak("이것은 "+textResult + "입니다");

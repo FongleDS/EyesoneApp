@@ -39,7 +39,6 @@ public class TextActivity extends AppCompatActivity {
     private static final int DOUBLE_CLICK_TIME_DELTA = 5000;
 
 
-
     private Handler Handler = new Handler();
     private Runnable Runnable = new Runnable() {
         @Override
@@ -70,7 +69,7 @@ public class TextActivity extends AppCompatActivity {
                     Handler.removeCallbacks(Runnable);
                     Clicks = true;
                     tts.speak("카메라를 실행합니다");
-                    Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
                     startActivity(intent);
                 }
             }

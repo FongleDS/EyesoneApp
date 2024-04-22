@@ -28,17 +28,6 @@
             android:name="com.goodle.android.geo.API_KEY"
             android:value="AIzaSyCRmidlm35d9b3axL3gnJpCgIu38XYSHug" />
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-            <intent-filter>
-                <action android:name="android.intent.action.TTS_SERVICE" />
-            </intent-filter>
-        </activity>
-
 
         <activity
             android:name=".NeviActivity"
@@ -85,7 +74,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

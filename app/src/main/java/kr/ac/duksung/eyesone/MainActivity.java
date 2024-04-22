@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     textHandler.removeCallbacks(textRunnable);
                     textClicks = true;
                     tts.speak("텍스트 읽어주기 페이지로 넘어갑니다");
-                    Intent intent = new Intent(getApplicationContext(), TextActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
                     startActivity(intent);
                 }
             }

@@ -9,16 +9,35 @@
     tools:context=".CameraActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="👀 텍스트 인식"
-        android:fontFamily="@font/pretendardbold"
-        android:textSize="25sp"
-        android:textColor="#5B5B5B"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="left"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/img_eyes"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="텍스트 인식"
+                android:fontFamily="@font/pretendardbold"
+                android:textSize="25sp"
+                android:textColor="#5B5B5B"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="left"/>
+
+        </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
@@ -60,11 +79,12 @@
         />
     <ImageView
         android:id="@+id/voicerecoder"
-        android:layout_width="77dp"
+        android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginBottom="10dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@drawable/voice" />
+    </LinearLayout>
 
 </LinearLayout>

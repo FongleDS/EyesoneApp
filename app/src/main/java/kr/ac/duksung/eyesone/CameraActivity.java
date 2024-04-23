@@ -50,6 +50,7 @@ import retrofit2.Retrofit;
 public class CameraActivity extends AppCompatActivity {
 
     ImageView imageView;
+    ImageView voicerecoder;
     File file;
     Button button;
     private MyTTS tts;
@@ -69,6 +70,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        voicerecoder = findViewById(R.id.voicerecoder);
 
         tts = new MyTTS(this, null);
 
@@ -98,6 +100,14 @@ public class CameraActivity extends AppCompatActivity {
                         requestCameraPermission();
                     }
                 }
+            }
+        });
+
+        voicerecoder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

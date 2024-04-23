@@ -60,7 +60,7 @@ public class CameraActivity extends AppCompatActivity {
     private Runnable Runnable = new Runnable() {
         @Override
         public void run() {
-            Toast.makeText(CameraActivity.this, "Detect Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(CameraActivity.this, "Detect Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
             Clicks = true;
         }
     };
@@ -84,7 +84,7 @@ public class CameraActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (Clicks) {
                     tts.speak("카메라 실행 버튼");
-                    Toast.makeText(CameraActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(CameraActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     Clicks = false;
                     Handler.postDelayed(Runnable, DOUBLE_CLICK_TIME_DELTA);
                 } else {
@@ -134,7 +134,7 @@ public class CameraActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 capture();
             } else {
-                Toast.makeText(this, "카메라 권한이 거부되었습니다.", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "카메라 권한이 거부되었습니다.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -199,7 +199,7 @@ public class CameraActivity extends AppCompatActivity {
                             public void run() {
                                 TextView textView = findViewById(R.id.text_view);
                                 textView.setText(textResult);
-                                Toast.makeText(CameraActivity.this, "Upload Success", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(CameraActivity.this, "Upload Success", Toast.LENGTH_SHORT).show();
 
                                 byte[] decodedString = Base64.decode(imageBase64, Base64.DEFAULT);
                                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -213,7 +213,7 @@ public class CameraActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(CameraActivity.this, "JSON Parsing Error", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(CameraActivity.this, "JSON Parsing Error", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -228,7 +228,7 @@ public class CameraActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         System.out.println(e);
-                        Toast.makeText(CameraActivity.this, "Request Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(CameraActivity.this, "Request Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

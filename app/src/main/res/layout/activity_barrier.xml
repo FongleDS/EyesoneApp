@@ -6,25 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".BarrierActivity">
 
-    <ImageView
-        android:id="@+id/voicerecoder"
-        android:layout_width="128dp"
-        android:layout_height="126dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/voice" />
-
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@id/voicerecoder"
-        android:background="@drawable/obstacle"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/btn_barrier"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장애물 탐지"
+                android:fontFamily="@font/pretendardbold"
+                android:textSize="25sp"
+                android:textColor="#5B5B5B"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="left"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="620dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/obstacle"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/voicerecoder"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/voice" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

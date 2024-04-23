@@ -7,9 +7,13 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+
+
 public class MainActivity extends AppCompatActivity {
+
 
     Button nevi;
     Button detect;
@@ -53,17 +57,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nevi = findViewById(R.id.nevi);
-        detect = findViewById(R.id.detect);
-        //parent = findViewById(R.id.parent);
-        textreader = findViewById(R.id.textreader);
+        LinearLayout detectLayout = findViewById(R.id.detect);
+        LinearLayout neviLayout = findViewById(R.id.nevi);
+        LinearLayout textreaderLayout = findViewById(R.id.textreader);
 
         tts = new MyTTS(this, null);
         barClicks = true;
         navClicks = true;
         textClicks = true;
 
-        detect.setOnClickListener(new View.OnClickListener() {
+        detectLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (barClicks) {
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        nevi.setOnClickListener(new View.OnClickListener() {
+        neviLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (navClicks) {
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
-        textreader.setOnClickListener(new View.OnClickListener() {
+        textreaderLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (textClicks) {

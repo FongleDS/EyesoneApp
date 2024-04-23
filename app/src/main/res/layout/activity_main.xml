@@ -6,46 +6,218 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--<TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메뉴를 클릭하면\nEyes One만의 👀\n기능을 이용할 수 있어요!"
+        android:textColor="#5B5B5B"
+        android:textSize="20sp"
+        android:fontFamily="@font/pretendardsemibold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"/>
+
     <Button
         android:id="@+id/detect"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#CCF9A0"
+        android:background="@drawable/btn_main"
         android:text="장애물탐지"
+        android:padding="20dp"
+        android:textAlignment="viewStart"
+        android:layout_width="285dp"
+        android:layout_height="0dp"
         android:textSize="24sp"
-        android:layout_margin="20dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nevi"
-        app:layout_constraintVertical_weight="1"/>
+        app:layout_constraintTop_toBottomOf="@id/title_text"
+        />
 
     <Button
         android:id="@+id/nevi"
-        android:layout_width="0dp"
+        android:layout_width="285dp"
         android:layout_height="0dp"
-        android:background="#CCF9A0"
-        android:text="네비게이션"
-        android:layout_margin="20dp"
         android:textSize="24sp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detect"
-        app:layout_constraintBottom_toTopOf="@id/textreader"
-        app:layout_constraintVertical_weight="1"/>
+        android:background="@drawable/btn_main"
+        android:text="네비게이션"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toBottomOf="@id/detect"/>
 
     <Button
         android:id="@+id/textreader"
-        android:layout_width="0dp"
+        android:layout_width="285dp"
         android:layout_height="0dp"
-        android:background="#CCF9A0"
-        android:text="텍스트 읽어주기"
         android:textSize="24sp"
-        android:layout_margin="20dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nevi"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_weight="1"/>
+        android:background="@drawable/btn_main"
+        android:text="텍스트 읽어주기"
+        android:textAlignment="viewStart"/>-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".MainActivity"
+        tools:ignore="MissingConstraints">
+
+        <!-- 타이틀 텍스트 -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴를 클릭하면\nEyes One만의 👀\n기능을 이용할 수 있어요!"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="15dp"
+            android:textSize="30sp"
+            android:fontFamily="@font/pretendardbold"
+            android:textColor="#5B5B5B"
+            android:layout_marginBottom="20dp" />
+
+        <!-- 장애물 탐지 기능 -->
+
+        <LinearLayout
+            android:id="@+id/detect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_main"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="30dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/pretendardbold"
+                    android:text="장애물 탐지"
+                    android:textColor="#5B5B5B"
+                    android:textSize="29sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/pretendardregular"
+                    android:textColor="#5B5B5B"
+                    android:text="카메라를 통해 장애물을\n인식하고 사용자에게\n 장애물 알림을 보냅니다."
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/btn_barrier"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nevi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/btn_main"
+            android:layout_marginTop="15dp"
+            android:padding="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="네비게이션"
+                    android:textColor="#5B5B5B"
+                    android:fontFamily="@font/pretendardbold"
+                    android:textSize="29sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#5B5B5B"
+                    android:fontFamily="@font/pretendardregular"
+                    android:text="음성인식을 통해\n목적지를 인식하고\n사용자의 길안내를 돕습니다."
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/btn_nevi" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/textreader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/btn_main"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="30dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="텍스트 인식"
+                    android:textColor="#5B5B5B"
+                    android:fontFamily="@font/pretendardbold"
+                    android:textSize="29sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/pretendardregular"
+                    android:textColor="#5B5B5B"
+                    android:text="텍스트를 인식하여\n음성으로 나타내어 줍니다."
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/btn_text"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+
+
+    <!-- 나머지 기능들도 위와 같이 LinearLayout으로 추가 -->
+
+</LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

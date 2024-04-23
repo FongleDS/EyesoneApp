@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable barRunnable = new Runnable() {
         @Override
         public void run() {
-            Toast.makeText(MainActivity.this, "Detect Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Detect Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
             barClicks = true;
         }
     };
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable navRunnable = new Runnable() {
         @Override
         public void run() {
-            Toast.makeText(MainActivity.this, "Navi Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Navi Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
             navClicks = true;
         }
     };
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable textRunnable = new Runnable() {
         @Override
         public void run() {
-            Toast.makeText(MainActivity.this, "Text Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(MainActivity.this, "Text Timer expired, no second click detected.", Toast.LENGTH_SHORT).show();
             textClicks = true;
         }
     };
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (barClicks) {
                     tts.speak("장애물 탐지");
-                    Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     barClicks = false;
                     barHandler.postDelayed(barRunnable, DOUBLE_CLICK_TIME_DELTA);
                 } else {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (navClicks) {
                     tts.speak("네비게이션");
-                    Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     navClicks = false;
                     navHandler.postDelayed(navRunnable, DOUBLE_CLICK_TIME_DELTA);
                 } else {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (textClicks) {
                     tts.speak("텍스트 읽어주기");
-                    Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(MainActivity.this, "TTS 작동", Toast.LENGTH_SHORT).show();
                     textClicks = false;
                     textHandler.postDelayed(textRunnable, DOUBLE_CLICK_TIME_DELTA);
                 } else {

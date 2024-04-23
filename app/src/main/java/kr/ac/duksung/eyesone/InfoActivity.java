@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class InfoActivity extends AppCompatActivity {
     private long lastClickTime = 0; // 마지막 클릭 시간
-    private int clickTime = 0; // 클릭 된 횟수
+    private int clickTime = 0;
     private final int TIMES_REQUIRED = 2; // 총 필요한 클릭 횟수
     private final int TIME_TIMEOUT = 2000;  // 마지막 클릭후 제한시간
 

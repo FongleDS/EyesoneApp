@@ -44,7 +44,7 @@ public class CaptureActivity extends AppCompatActivity {
         textureView.setSurfaceTextureListener(surfaceTextureListener);
         captureButton.setOnClickListener(v -> captureStillPicture());
 
-        handler.postDelayed(this::captureStillPicture, 5000);  // 자동 캡처 타이머
+        handler.postDelayed(this::captureStillPicture, 5000);
     }
 
     private final TextureView.SurfaceTextureListener surfaceTextureListener = new TextureView.SurfaceTextureListener() {
@@ -55,18 +55,15 @@ public class CaptureActivity extends AppCompatActivity {
 
         @Override
         public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-            // 사이즈가 변경되었을 때 처리할 내용 (필요한 경우)
         }
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-            // 텍스처가 파괴되었을 때 처리할 내용 (필요한 경우)
-            return true; // 반환값은 텍스처를 파괴할지 여부입니다. 보통 true를 반환합니다.
+            return true;
         }
 
         @Override
         public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-            // 텍스처가 업데이트(뷰가 갱신)되었을 때 처리할 내용 (필요한 경우)
         }
     };
 
@@ -78,13 +75,10 @@ public class CaptureActivity extends AppCompatActivity {
             CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
             StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 
-            // ImageReader 초기화
             imageReader = ImageReader.newInstance(640, 480, ImageFormat.JPEG, /*maxImages*/2);
             imageReader.setOnImageAvailableListener(reader -> {
-                // 이미지 사용 코드
             }, handler);
 
-            // 권한 확인 및 카메라 오픈
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST);
                 return;
@@ -102,30 +96,24 @@ public class CaptureActivity extends AppCompatActivity {
             texture.setDefaultBufferSize(640, 480);
             Surface surface = new Surface(texture);
 
-            // 이 부분에서 ImageReader의 Surface를 추가합니다.
             captureRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             captureRequestBuilder.addTarget(surface);
             if (imageReader != null) {
                 captureRequestBuilder.addTarget(imageReader.getSurface());
             }
 
-            // 세션 생성
             cameraDevice.createCaptureSession(Arrays.asList(surface, imageReader.getSurface()),
                     new CameraCaptureSession.StateCallback() {
 
                         @Override
                         public void onConfigured(@NonNull CameraCaptureSession cameraCaptureSession) {
-                            // The camera is already closed
                             if (cameraDevice == null) {
                                 return;
                             }
-                            // When the session is ready, we start displaying the preview.
                             cameraCaptureSession = cameraCaptureSession;
                             try {
-                                // Auto focus should be continuous for camera preview.
                                 captureRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE,
                                         CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
-                                // Finally, we start displaying the camera preview.
                                 cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null,
                                         handler);
                             } catch (CameraAccessException e) {

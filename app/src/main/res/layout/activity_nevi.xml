@@ -68,15 +68,28 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="412dp"
-        android:layout_height="71dp"
+        android:layout_width="339dp"
+        android:layout_height="67dp"
         android:paddingLeft="15sp"
         android:paddingTop="10sp"
         android:text="네비게이션"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mapImg"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/mapImg"
+        android:layout_width="38dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/origin"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/map" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

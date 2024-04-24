@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     barHandler.removeCallbacks(barRunnable);
                     barClicks = true;
                     tts.speak("장애물 탐지 페이지");
-                    Intent intent = new Intent(getApplicationContext(), BarrierActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), DetectorActivity.class);
                     startActivity(intent);
                 }
             }

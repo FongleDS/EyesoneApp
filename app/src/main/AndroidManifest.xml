@@ -135,6 +135,10 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".DetectorActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".TitleActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">

@@ -6,6 +6,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
     private TextView originText;
     private Button btn_destination;
     private Geocoder geocoder;
+    private ImageView voicerecoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,20 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_nevi);
         originText = findViewById(R.id.origin);
         btn_destination = findViewById(R.id.btn_destination);
+        voicerecoder = findViewById(R.id.voicerecoder);
 
         btn_destination.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NeviActivity.this, NeviActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+        voicerecoder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NeviActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

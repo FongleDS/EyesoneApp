@@ -50,6 +50,7 @@ import retrofit2.Retrofit;
 public class CameraActivity extends AppCompatActivity {
 
     ImageView imageView;
+    ImageView voicerecoder;
     File file;
     Button button;
     private MyTTS tts;
@@ -75,10 +76,19 @@ public class CameraActivity extends AppCompatActivity {
         file = new File(sdcard, "capture.jpg");
 
         imageView = findViewById(R.id.imageView);
+        voicerecoder = findViewById(R.id.voicerecoder);
         Clicks = true;
 
         button = findViewById(R.id.button);
         Button button = findViewById(R.id.button);
+
+        voicerecoder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (Clicks) {

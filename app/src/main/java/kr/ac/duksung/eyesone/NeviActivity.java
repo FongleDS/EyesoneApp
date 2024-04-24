@@ -6,6 +6,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,22 +34,29 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private LocationManager locationManager;
     private TextView originText;
-    private Button btn_destination;
+    private Button btn_setdes;
     private Geocoder geocoder;
     private ImageView voicerecoder;
+    private EditText set_address_Text;
+    private Location mCurrentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nevi);
         originText = findViewById(R.id.origin);
-        btn_destination = findViewById(R.id.btn_destination);
+        btn_setdes = findViewById(R.id.btn_setdes);
         voicerecoder = findViewById(R.id.voicerecoder);
+        set_address_Text = findViewById(R.id.set_address_Text);
+        geocoder = new Geocoder(this);
 
-        btn_destination.setOnClickListener(new View.OnClickListener() {
+        btn_setdes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String destinationAddress = set_address_Text.getText().toString();
                 Intent intent = new Intent(NeviActivity.this, NeviActivity2.class);
+                intent.putExtra("CurrentLocation", new double[]{mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude()});
+                intent.putExtra("Destination", destinationAddress);
                 startActivity(intent);
             }
         });
@@ -135,6 +143,7 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void updateLocationUI(Location location) {
         if (location != null) {
+            mCurrentLocation = location;
             double latitude = location.getLatitude();
             double longitude = location.getLongitude();
 

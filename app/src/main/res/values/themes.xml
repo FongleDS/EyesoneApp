@@ -2,16 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.Eyesone" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
-        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">#5B5B5B</item>
+        <item name="colorAccent">#5B5B5B</item>
         <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--<item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>-->
-        <item name="android:windowBackground">@mipmap/img</item>
+        <item name="android:windowBackground">@mipmap/title_img</item>
     </style>
 </resources>

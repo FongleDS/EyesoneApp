@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,7 +24,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.ExifInterface;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -159,22 +163,46 @@ public class CameraActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 101 && resultCode == Activity.RESULT_OK){
+        if (requestCode == 101 && resultCode == RESULT_OK) {
             BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 8;
-            // Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
-            // imageView.setImageBitmap(bitmap);
+            options.inSampleSize = 8; // 이미지 크기를 줄이기 위해 샘플링 사이즈 설정
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
 
-            uploadImage(file);
+            try {
+                bitmap = rotateImageIfRequired(bitmap, Uri.fromFile(file)); // 이미지 회전 처리
+                file = saveBitmapToFile(bitmap, file); // 회전된 이미지를 파일로 저장
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (file != null) {
+                imageView.setImageBitmap(bitmap); // 이미지뷰에 회전된 이미지 표시
+                uploadImage(file); // 서버에 이미지 파일 업로드
+            }
         }
     }
+
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode == 101 && resultCode == Activity.RESULT_OK){
+//            BitmapFactory.Options options = new BitmapFactory.Options();
+//            options.inSampleSize = 8;
+//            // Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+//            // imageView.setImageBitmap(bitmap);
+//
+//            uploadImage(file);
+//        }
+//    }
 
 
     private void uploadImage(File imageFile) {
 
         // String apiURL = "http://10.0.2.2:5000/upload";
         // String apiURL = "http://192.168.137.1:5000/upload";
-        String apiURL = "http://192.168.0.142:5000/upload";
+        String apiURL = "http://192.168.0.142:8000/upload";
 
         OkHttpClient client = new OkHttpClient();
 
@@ -242,6 +270,46 @@ public class CameraActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
+
+
+
+    private Bitmap rotateImageIfRequired(Bitmap img, Uri selectedImage) throws IOException {
+        ExifInterface ei = new ExifInterface(selectedImage.getPath());
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return rotateImage(img, 90);
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return rotateImage(img, 180);
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return rotateImage(img, 270);
+            default:
+                return img;
+        }
+    }
+
+    private static Bitmap rotateImage(Bitmap img, int degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+        img.recycle();
+        return rotatedImg;
+    }
+
+    private File saveBitmapToFile(Bitmap bitmap, File file) {
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 }

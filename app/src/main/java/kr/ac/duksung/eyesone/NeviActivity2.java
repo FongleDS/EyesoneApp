@@ -82,7 +82,7 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
                 Address address = addresses.get(0);
                 LatLng destinationLatLng = new LatLng(address.getLatitude(), address.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(destinationLatLng).title("목적지"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(destinationLatLng, 12));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(destinationLatLng, 15));
                 drawRoute(currentLocation, destinationLatLng); // 경로 그리기 메서드 호출
             } else {
                 Toast.makeText(this, "주소를 찾을 수 없습니다.", Toast.LENGTH_LONG).show();
@@ -100,7 +100,7 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
                 .build();
 
         DirectionsApiRequest req = DirectionsApi.newRequest(context)
-                .mode(TravelMode.DRIVING)    // 이동 수단: DRIVING, WALKING, BICYCLING 등
+                .mode(TravelMode.WALKING)    // 이동 수단: DRIVING, WALKING, BICYCLING 등
                 .origin(new com.google.maps.model.LatLng(origin.latitude, origin.longitude))
                 .destination(new com.google.maps.model.LatLng(destination.latitude, destination.longitude));
 

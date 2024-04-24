@@ -39,6 +39,7 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ImageView voicerecoder;
     private EditText set_address_Text;
     private Location mCurrentLocation;
+    private String mCurrentAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,9 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View v) {
                 String destinationAddress = set_address_Text.getText().toString();
                 Intent intent = new Intent(NeviActivity.this, NeviActivity2.class);
-                intent.putExtra("CurrentLocation", new double[]{mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude()});
+                intent.putExtra("CurrentLocationLat", mCurrentLocation.getLatitude());
+                intent.putExtra("CurrentLocationLng", mCurrentLocation.getLongitude());
+                intent.putExtra("CurrentAddress", mCurrentAddress);
                 intent.putExtra("Destination", destinationAddress);
                 startActivity(intent);
             }
@@ -166,6 +169,7 @@ public class NeviActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
             }
         }
+
     }
 
     @Override

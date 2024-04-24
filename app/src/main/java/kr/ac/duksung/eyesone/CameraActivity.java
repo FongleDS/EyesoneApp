@@ -162,8 +162,10 @@ public class CameraActivity extends AppCompatActivity {
 
     private void uploadImage(File imageFile) {
 
-        String apiURL = "http://10.0.2.2:5000/upload";
+        // String apiURL = "http://10.0.2.2:5000/upload";
         // String apiURL = "http://192.168.137.1:5000/upload";
+        String apiURL = "http://192.168.0.142:5000/upload";
+
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("image/jpeg");

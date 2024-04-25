@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -61,6 +62,9 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
     private double currentLat;
     private double currentLng;
     private LocationManager locationManager;
+    TextView walking;
+    TextView driving;
+    TextView bicycling;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,7 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         nevi_start = findViewById(R.id.nevi_start);
+        walking = findViewById(R.id.walking);
 
         //set_destination = findViewById(R.id.set_destination);
         geocoder = new Geocoder(this);
@@ -100,7 +105,8 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
         });
 
     }
-/*
+    /*
+
     @Override
     public void onLocationChanged(Location location) {
         LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
@@ -121,7 +127,7 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
         // Optional to implement
     }
 
- */
+     */
 
     private void updateDirections(LatLng currentLocation) {
         GeoApiContext context = new GeoApiContext.Builder()
@@ -218,9 +224,15 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
                     public void run() {
                         if (result.routes != null && result.routes.length > 0) {
                             DirectionsRoute route = result.routes[0];
+                            long totalDuration = 0;
+
                             // 경로 추출
                             PolylineOptions lineOptions = new PolylineOptions();
                             List<com.google.maps.model.LatLng> path = route.overviewPolyline.decodePath();
+                            for (DirectionsLeg leg : route.legs){
+                                totalDuration += leg.duration.inSeconds;
+                            }
+
                             for (com.google.maps.model.LatLng point : path) {
                                 lineOptions.add(new LatLng(point.lat, point.lng));
                             }
@@ -228,6 +240,9 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
                             lineOptions.color(Color.RED);
 
                             mMap.addPolyline(lineOptions);  // 경로 그리기
+
+                            walking.setText("목적지: " + destinationAddress + "\n예상시간: " + (totalDuration / 60) + " minutes");
+
                         }
                     }
                 });
@@ -246,4 +261,3 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
         });
     }
 }
-

@@ -31,18 +31,49 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-<!--
-    <EditText
-        android:id="@+id/set_destination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <TextView
+        android:id="@+id/walking"
+        android:layout_width="115dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
-        android:text="목적지를 입력하세요."
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/destination"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nevi_start"
         app:layout_constraintStart_toStartOf="parent" />
-        -->
+
+    <TextView
+        android:id="@+id/driving"
+        android:layout_width="115dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nevi_start"
+        app:layout_constraintStart_toEndOf="@+id/walking" />
+
+    <TextView
+        android:id="@+id/bicycling"
+        android:layout_width="115dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nevi_start"
+        app:layout_constraintStart_toEndOf="@+id/driving" />
+
+    <!--
+        <EditText
+            android:id="@+id/set_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="목적지를 입력하세요."
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/destination"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+            -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

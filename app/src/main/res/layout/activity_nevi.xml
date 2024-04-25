@@ -40,16 +40,12 @@
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:text="현재 내 위치 정보"
-            android:paddingLeft="30sp"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/origin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/origin"
@@ -60,20 +56,24 @@
             android:paddingLeft="30sp"
             android:paddingRight="30sp"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/set_address_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="목적지를 입력하세요."
+            android:inputType="textPostalAddress"/>
 
         <Button
-            android:id="@+id/btn_destination"
+            android:id="@+id/btn_setdes"
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:backgroundTint="#DBF2C5"
             android:gravity="center"
             android:inputType="text"
-            android:text="목적지를 입력하세요."
+            android:text="목적지로 설정"
             app:layout_constraintEnd_toEndOf="@+id/origin"
             app:layout_constraintStart_toStartOf="@+id/origin"
             app:layout_constraintTop_toBottomOf="@+id/origin" />

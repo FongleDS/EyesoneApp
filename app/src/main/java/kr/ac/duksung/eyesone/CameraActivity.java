@@ -202,7 +202,8 @@ public class CameraActivity extends AppCompatActivity {
 
         // String apiURL = "http://10.0.2.2:5000/upload";
         // String apiURL = "http://192.168.137.1:5000/upload";
-        String apiURL = "http://192.168.0.142:8000/upload";
+        // String apiURL = "http://192.168.0.142:8000/upload";
+        String apiURL = "http://172.30.1.1:8000/upload";
 
         OkHttpClient client = new OkHttpClient();
 

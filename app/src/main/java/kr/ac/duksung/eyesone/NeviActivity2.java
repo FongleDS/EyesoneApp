@@ -1,6 +1,8 @@
 package kr.ac.duksung.eyesone;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,9 +34,22 @@ import com.google.maps.DirectionsApiRequest;
 import com.google.maps.GeoApiContext;
 import com.google.maps.PendingResult;
 import com.google.maps.errors.ApiException;
+import com.google.maps.model.DirectionsLeg;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.DirectionsRoute;
+import com.google.maps.model.DirectionsStep;
 import com.google.maps.model.TravelMode;
+
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.Looper;
+
+import androidx.core.app.ActivityCompat;
+import android.Manifest;
+import android.content.pm.PackageManager;
+
 
 public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -43,10 +60,14 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
     private String destinationAddress;
     private double currentLat;
     private double currentLng;
+    private LocationManager locationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nevi2); // XML 파일 이름에 맞게 수정
+        setContentView(R.layout.activity_nevi2);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
         nevi_start = findViewById(R.id.nevi_start);
 
         //set_destination = findViewById(R.id.set_destination);
@@ -60,13 +81,98 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.nevi_fragment);
         mapFragment.getMapAsync(this);
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+        } else {
+            //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this, Looper.getMainLooper());
+        }
+
         nevi_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NeviActivity2.this, NeviStartActivity.class);
-                startActivity(intent);
+                if (mMap != null) {
+                    LatLng currentLocation = new LatLng(currentLat, currentLng);
+                    updateDirections(currentLocation);
+                } else {
+                    Toast.makeText(NeviActivity2.this, "지도가 준비되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+    }
+/*
+    @Override
+    public void onLocationChanged(Location location) {
+        LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+        updateDirections(currentLocation);
+    }
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // Optional to implement
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        // Optional to implement
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        // Optional to implement
+    }
+
+ */
+
+    private void updateDirections(LatLng currentLocation) {
+        GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyCRmidlm35d9b3axL3gnJpCgIu38XYSHug")
+                .build();
+
+        DirectionsApiRequest req = DirectionsApi.newRequest(context)
+                .mode(TravelMode.DRIVING)
+                .origin(new com.google.maps.model.LatLng(currentLocation.latitude, currentLocation.longitude))
+                .destination(destinationAddress)
+                .language("ko");  // 한국어로 설정
+
+        req.setCallback(new PendingResult.Callback<DirectionsResult>() {
+            @Override
+            public void onResult(DirectionsResult result) {
+                if (result.routes != null && result.routes.length > 0) {
+                    DirectionsRoute route = result.routes[0];
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (DirectionsLeg leg : route.legs) {
+                                for (DirectionsStep step : leg.steps) {
+                                    System.out.println(step.distance.humanReadable + " 미터 앞에서 " + step.htmlInstructions);
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+                runOnUiThread(() -> Toast.makeText(NeviActivity2.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show());
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 권한이 허용된 경우, 위치 업데이트 시작
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
+                }
+            } else {
+                // 권한이 거부된 경우, 유저에게 권한 필요성 설명
+                Toast.makeText(this, "위치 권한이 필요합니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override

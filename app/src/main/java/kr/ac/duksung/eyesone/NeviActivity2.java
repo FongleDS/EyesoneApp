@@ -73,7 +73,7 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         nevi_start = findViewById(R.id.nevi_start);
-        walking = findViewById(R.id.walking);
+        //walking = findViewById(R.id.walking);
 
         //set_destination = findViewById(R.id.set_destination);
         geocoder = new Geocoder(this);
@@ -241,7 +241,10 @@ public class NeviActivity2 extends AppCompatActivity implements OnMapReadyCallba
 
                             mMap.addPolyline(lineOptions);  // 경로 그리기
 
-                            walking.setText("목적지: " + destinationAddress + "\n예상시간: " + (totalDuration / 60) + " minutes");
+                            Toast.makeText(NeviActivity2.this, "예상시간: " + (totalDuration / 60) + " minutes", Toast.LENGTH_LONG).show();
+
+
+                            //walking.setText("목적지: " + destinationAddress + "\n예상시간: " + (totalDuration / 60) + " minutes");
 
                         }
                     }

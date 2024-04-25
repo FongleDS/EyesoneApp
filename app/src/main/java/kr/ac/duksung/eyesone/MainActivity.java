@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 
 
+
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private MyTTS tts;
     private boolean barClicks, navClicks, textClicks;
     private static final int DOUBLE_CLICK_TIME_DELTA = 5000;
+
 
     private Handler barHandler = new Handler();
     private Runnable barRunnable = new Runnable() {

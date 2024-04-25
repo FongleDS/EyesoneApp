@@ -30,6 +30,7 @@ import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
 import android.speech.tts.TextToSpeech;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
@@ -83,6 +84,8 @@ public class DetectorActivity extends CameraActivity_yolo implements OnImageAvai
     private MultiBoxTracker tracker;
 
     private BorderedText borderedText;
+
+    private String previousDetectedClass = null;
 
     @Override
     public void onPreviewSizeChosen(final Size size, final int rotation) {
@@ -246,7 +249,7 @@ public class DetectorActivity extends CameraActivity_yolo implements OnImageAvai
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status != ERROR) {
+                if (status != ERROR) {
                     tts.setLanguage(Locale.KOREAN);
                 }
             }
@@ -284,7 +287,7 @@ public class DetectorActivity extends CameraActivity_yolo implements OnImageAvai
                         int size, r = 0;
                         for (Classifier.Recognition result : results) {
                             RectF location = result.getLocation();
-                            size = (int)(location.height() * location.width());
+                            size = (int) (location.height() * location.width());
                             if (size > maxSize[1]) {
                                 maxSize[0] = r;
                                 maxSize[1] = size;
@@ -299,11 +302,16 @@ public class DetectorActivity extends CameraActivity_yolo implements OnImageAvai
                                 cropToFrameTransform.mapRect(location);
                                 result.setLocation(location);
                                 mappedRecognitions.add(result);
-                                tts.speak(result.getTitle(),TextToSpeech.QUEUE_FLUSH,null,null);
+
+                                // 현재 탐지한 클래스와 바로 직전에 탐지한 클래스가 같은지 확인
+                                String currentDetectedClass = result.getTitle();
+                                if (!TextUtils.equals(currentDetectedClass, previousDetectedClass)) {
+                                    // 현재 탐지한 클래스와 바로 직전에 탐지한 클래스가 다른 경우에만 TTS 실행
+                                    tts.speak(currentDetectedClass, TextToSpeech.QUEUE_FLUSH, null, null);
+                                    previousDetectedClass = currentDetectedClass;
+                                }
                             }
                         }
-
-
 
                         tracker.trackResults(mappedRecognitions, currTimestamp);
                         trackingOverlay.postInvalidate();

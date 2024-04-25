@@ -1,4 +1,13 @@
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/GreenCube/StudioProjects/EyesoneApp/app/src/main/res/drawable/bottom_sheet_bg.xml" value="0.1" />
+        <entry key="..\:/Users/GreenCube/StudioProjects/EyesoneApp/app/src/main/res/drawable/item_selector.xml" value="0.1" />
+        <entry key="..\:/Users/GreenCube/StudioProjects/EyesoneApp/app/src/main/res/layout/activity_detector.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

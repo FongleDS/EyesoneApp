@@ -8,16 +8,72 @@
     tools:context=".NeviActivity2">
 
     <fragment
-        android:id="@+id/Nevi"
+        android:id="@+id/nevi_fragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/nevi_start"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_1"
+        android:text="안내 시작"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/walking"
+        android:layout_width="115dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nevi_start"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/driving"
+        android:layout_width="115dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nevi_start"
+        app:layout_constraintStart_toEndOf="@+id/walking" />
+
+    <TextView
+        android:id="@+id/bicycling"
+        android:layout_width="115dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nevi_start"
+        app:layout_constraintStart_toEndOf="@+id/driving" />
+
+    <!--
+        <EditText
+            android:id="@+id/set_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="목적지를 입력하세요."
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/destination"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+            -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
